@@ -1,21 +1,26 @@
-import {VStack, HStack, Heading, Text, Spacer, Icon} from '@chakra-ui/react';
+import {VStack, HStack, Heading, Text, Spacer, Icon, Image} from '@chakra-ui/react';
 import { List } from 'react-feather';
+import NavItem from './NavItem'
+import {navItems} from './navbar.config'
 
 export default function NavBar() {
     return (
-        <HStack gap={10} pl={10} pr={10} bg="green" w="100%" h="70px">
+        <HStack gap={10} pl={10} pr={10} bg="#0E1A17" w="100%" h="80px" justify="space-between">
 
-            <Heading fontSize={40}>Mikro</Heading>
+            <Image 
+                src="mikro_logo.png"
+                boxSize={12}
+            />
 
-            <Spacer></Spacer>
+            <HStack gap={12}>
+                {navItems.map((nav) => (
+                    <NavItem text={nav.text} path={nav.path}/>
+                ))}
 
-            <Text fontSize={25} cursor="pointer">Om oss</Text>
-            <Text fontSize={25} cursor="pointer">Intern</Text>
-            <Text fontSize={25} cursor="pointer">Arrangementer</Text>
-            <Text fontSize={25} cursor="pointer">Vedtekter</Text>
-            <Text fontSize={25} cursor="pointer">Kontakt</Text>
-            <Icon as={List} cursor="pointer"></Icon>
-            
+                <Icon as={List} cursor="pointer" color="#CA8F54" boxSize={8}></Icon>
+
+            </HStack>
+
         </HStack>
     )
 }
